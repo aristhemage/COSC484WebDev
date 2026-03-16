@@ -3,9 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login Page</title>
+
+    <style>
+        /* Temp until Ryley makes css */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #6d6875;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-box {
+            width: 320px;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+            box-shadow: 0px 6px 16px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 85%;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            display: block;
+            width: 90%;
+            margin: 15px auto 0;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #B5838D;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #a36b76;
+        }
+
+    </style>
 </head>
+
 <body>
-    <h1>Login</h1>
+
+    <div class="login-box">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button>Login</button>
+    </div>
+
 </body>
 </html>
