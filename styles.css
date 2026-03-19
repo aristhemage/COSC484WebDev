@@ -46,3 +46,29 @@
         button:hover {
             background-color: #a36b76;
         }
+
+        .profileHeader{
+            display:flex;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #profilePic{
+            width: 150px; 
+            height:150px; 
+            border-radius:50%;
+            margin-right:20px
+        }
+
+        .profilBio{
+            display:flex;
+            flex-direction:column;
+        }
+
+        #username{
+            font-size:24px
+        }
+
+        #bio{
+            font-size:12p
+        }
