@@ -1,74 +1,134 @@
-        .login-page {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #6d6875;
-            font-family: Arial, sans-serif;
-        }
 
-        .login-box {
-            width: 320px;
-            padding: 30px;
-            border-radius: 10px;
-            background-color: #f0f0f0;
-            box-shadow: 0px 6px 16px rgba(0,0,0,0.2);
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+    background-color: #f0f0f0;
+}
 
-        .login-box > h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+main {
+    text-align: center;
+}
 
-        input {
-            display: block;
-            margin: 10px auto;
-            padding: 10px;
-            width: 85%;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
 
-        button {
-            display: block;
-            width: 90%;
-            margin: 15px auto 0;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            background-color: #B5838D;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
+.navbar {
+    background-color: #B5838D;
+    display: flex;
+    color: white;
+    overflow:hidden;
+    height: 80px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+}
 
-        button:hover {
-            background-color: #a36b76;
-        }
+.navbar a {
+    display: block;
+    text-decoration: none;
+    font-size: 1.4em;
+    padding: 0.6em;
+    color: white;
+}
 
-        .profileHeader{
-            display:flex;
-            align-items: center;
-            padding: 20px;
-        }
+.navbar li:hover {
+    background-color: #a36b76;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+.navbar li {
+    list-style-type: none;
+}
 
-        #profilePic{
-            width: 150px; 
-            height:150px; 
-            border-radius:50%;
-            margin-right:20px
-        }
+.navbar ul {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
 
-        .profilBio{
-            display:flex;
-            flex-direction:column;
-        }
+}
 
-        #username{
-            font-size:24px
-        }
+#petstagram-logo {
 
-        #bio{
-            font-size:12p
-        }
+    font-weight: bold;
+    font-size: 1.8em;
+}
+
+.form-page {
+    height: 100vh;
+    background-color: #6d6875;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.form-box {
+    width: 320px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.2);
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 85%;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    display: block;
+    width: 90%;
+    margin: 15px auto 0;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #B5838D;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #a36b76;
+}
+
+
+.profileHeader{
+    display:flex;
+    align-items: center;
+    padding: 20px;
+}
+
+#profilePic{
+    width: 150px; 
+    height:150px; 
+    border-radius:50%;
+    margin-right:20px
+}
+
+.profilBio{
+    display:flex;
+    flex-direction:column;
+}
+
+#username{
+    font-size:24px
+}
+
+#bio{
+    font-size:12p
+}
