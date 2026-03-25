@@ -4,19 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<body class = "form-page">
+<body class="form-page">
     <main>
         <div class="form-box">
             <h1>Login</h1>
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button>Login</button>
+            <input type="text" id="usernameInput" placeholder="Username" required>
+            <input type="password" id="passwordInput" placeholder="Password" required>
+            <button id="loginButton">Login</button>
         </div>
     </main>
 
+    <script>
+        // Example "user database" with username, password, bio, and profile pic
+        const users = {
+            "julie": { password: "axolotls", bio: "I love axolotls and coding!", pic: "julie.jpg" },
+            "avo": { password: "ilovepets96", bio: "Pet lover and gamer", pic: "avo.jpg" },
+            "braydon": { password: "ilovepets23", bio: "I love creating art", pic: "braydon.jpg" },
+            "riley": { password: "ilovepets12", bio: "Dog enthusiast", pic: "riley.jpg" },
+            "jeff": { password: "ilovepets134", bio: "Cats are my favorite", pic: "jeff.jpg" },
+            "temi": { password: "ilovepets494", bio: "Bird lover", pic: "temi.jpg" }
+        };
+
+        const loginButton = document.getElementById("loginButton");
+
+        loginButton.addEventListener("click", () => {
+            const username = document.getElementById("usernameInput").value;
+            const password = document.getElementById("passwordInput").value;
+
+            if(users[username] && users[username].password === password){
+                // Save user info to localStorage
+                localStorage.setItem("loggedInUser", username);
+                localStorage.setItem("loggedInUserBio", users[username].bio);
+                localStorage.setItem("loggedInUserPic", users[username].pic);
+
+                // Redirect to profile page
+                window.location.href = "profile.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        });
+    </script>
 </body>
 </html>
