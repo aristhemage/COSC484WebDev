@@ -22,7 +22,93 @@
     </header>
     
     <main>
-        <!--home page will be the gallery-->
+        <!--EXAMPLE POST 1-->
+        <div class = "container">
+            <!--NEEDS:
+                header
+                    pfp    
+                    Author username
+                photo
+                content section
+                    description
+                    rating + avg rating
+                comment section icon(can toggle on and off)
+                    comment username
+                    comment content
+                    include load more button for long comment sections
+            -->
+            <div class = "post">
+                
+                <section class="content-author">
+                    <!--profile photo and author name go here-->
+                </section>
+
+                <section class = "image-section">
+                    <img class = "post-image" src = "profilePicExample.jpg">
+                </section>
+
+                <section class = "post-content">
+                    <p class ="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus perspiciatis enim quidem. Quae nulla soluta alias unde impedit, excepturi cumque repellat omnis at magni, ipsum possimus quo, atque temporibus.</p>
+                    
+                    <div class = "rating-container">
+                        <input type="radio" id = "oneStar" value = "1">
+                        <input type="radio" id = "twoStar" value = "2">
+                        <input type="radio" id = "threeStar" value = "3">
+                        <input type="radio" id = "fourStar" value = "4">
+                        <input type="radio" id = "fourStar" value = "5">
+                    </div>
+
+
+                    <div class = "comment-section">
+                        <button id = "open-comments-btn"  onclick="">Open Comments</button>
+                        
+                        <div class = "collapsible-comments">
+                            <div class = "comment">
+                                <!--TODO: need to be able to link to people's public profile page-->
+                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">10/10 image like so good im eating rocks frfr on big g</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!--EXAMPLE POST 2-->
+
+            <div class = "post">
+                
+                <section class="content-author">
+                    <!--profile photo and author name go here-->
+                </section>
+
+                <section class = "image-section">
+                    <img class = "post-image" src = "test-post.jpg">
+                </section>
+
+                <section class = "post-content">
+                    <p class ="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus perspiciatis enim quidem. Quae nulla soluta alias unde impedit, excepturi cumque repellat omnis at magni, ipsum possimus quo, atque temporibus.</p>
+                    
+                    <div class = "rating-container">
+                        <input type="radio" id = "oneStar" value = "1" name = "rating">
+                        <input type="radio" id = "twoStar" value = "2" name = "rating">
+                        <input type="radio" id = "threeStar" value = "3" name = "rating">
+                        <input type="radio" id = "fourStar" value = "4" name = "rating">
+                        <input type="radio" id = "fourStar" value = "5" name = "rating">
+                    </div>
+
+
+                    <div class = "comment-section">
+                        <button id = "open-comments-btn"  onclick="">Open Comments</button>
+                        
+                        <div class = "collapsible-comments">
+                            <div class = "comment">
+                                <!--TODO: need to be able to link to people's public profile page-->
+                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">10/10 image like so good im eating rocks frfr on big g</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
     </main>
 </body>
 </html>
