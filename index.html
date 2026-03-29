@@ -21,15 +21,16 @@
         </nav>
     </header>
     
-    <main>
+    <main class = "home-page">
         <!--EXAMPLE POST 1-->
         <div class = "container">
             <!--NEEDS:
                 header
                     pfp    
                     Author username
-                photo
+                    date posted (for recent filter)
                 content section
+                    photo
                     description
                     rating + avg rating
                 comment section icon(can toggle on and off)
@@ -43,19 +44,19 @@
                     <!--profile photo and author name go here-->
                 </section>
 
-                <section class = "image-section">
-                    <img class = "post-image" src = "profilePicExample.jpg">
-                </section>
+                
 
                 <section class = "post-content">
+                    <img class = "post-image" src = "profilePicExample.jpg">
+
                     <p class ="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus perspiciatis enim quidem. Quae nulla soluta alias unde impedit, excepturi cumque repellat omnis at magni, ipsum possimus quo, atque temporibus.</p>
                     
                     <div class = "rating-container">
-                        <input type="radio" id = "oneStar" value = "1">
-                        <input type="radio" id = "twoStar" value = "2">
-                        <input type="radio" id = "threeStar" value = "3">
-                        <input type="radio" id = "fourStar" value = "4">
-                        <input type="radio" id = "fourStar" value = "5">
+                        <input type="radio" id = "one-star" value = "1" name = "rating" class = "rating">
+                        <input type="radio" id = "two-star" value = "2" name = "rating" class = "rating">
+                        <input type="radio" id = "three-star" value = "3" name = "rating" class = "rating">
+                        <input type="radio" id = "four-star" value = "4" name = "rating" class = "rating">
+                        <input type="radio" id = "five-star" value = "5" name = "rating" class = "rating">
                     </div>
 
 
@@ -65,7 +66,7 @@
                         <div class = "collapsible-comments">
                             <div class = "comment">
                                 <!--TODO: need to be able to link to people's public profile page-->
-                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">10/10 image like so good im eating rocks frfr on big g</span></p>
+                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos iste minus sapiente harum animi quis facilis ex aliquam in maxime error, perferendis vel eaque tempora non? Quaerat, provident dolores!</span></p>
                             </div>
                         </div>
                     </div>
@@ -80,19 +81,20 @@
                     <!--profile photo and author name go here-->
                 </section>
 
-                <section class = "image-section">
-                    <img class = "post-image" src = "test-post.jpg">
-                </section>
+
+                
+
 
                 <section class = "post-content">
+                    <img class = "post-image" src = "test-post.jpg">
                     <p class ="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus perspiciatis enim quidem. Quae nulla soluta alias unde impedit, excepturi cumque repellat omnis at magni, ipsum possimus quo, atque temporibus.</p>
                     
                     <div class = "rating-container">
-                        <input type="radio" id = "oneStar" value = "1" name = "rating">
-                        <input type="radio" id = "twoStar" value = "2" name = "rating">
-                        <input type="radio" id = "threeStar" value = "3" name = "rating">
-                        <input type="radio" id = "fourStar" value = "4" name = "rating">
-                        <input type="radio" id = "fourStar" value = "5" name = "rating">
+                        <input type="radio" id = "one-star" value = "1" name = "rating" class = "rating">
+                        <input type="radio" id = "two-star" value = "2" name = "rating" class = "rating">
+                        <input type="radio" id = "three-star" value = "3" name = "rating" class = "rating">
+                        <input type="radio" id = "four-star" value = "4" name = "rating" class = "rating">
+                        <input type="radio" id = "five-star" value = "5" name = "rating" class = "rating">
                     </div>
 
 
@@ -102,13 +104,24 @@
                         <div class = "collapsible-comments">
                             <div class = "comment">
                                 <!--TODO: need to be able to link to people's public profile page-->
-                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">10/10 image like so good im eating rocks frfr on big g</span></p>
+                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ea unde sapiente et aliquam distinctio dolor qui deleniti quo reiciendis quisquam, amet, earum maiores minus. Minus aspernatur obcaecati quod ex!</span></p>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
         </div>
+
+        <aside>
+            <div class="filters">
+                insert content Filters here<br>
+                <select>
+                    <option value="select">Select</option>
+                </select>
+            </div>
+            <button id = "back-to-top-btn">Back to Top</button> <!--TODO: add functionality & make visible only after scrolling down some-->
+        </aside>
+
     </main>
 </body>
 </html>
