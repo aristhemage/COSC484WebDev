@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 body {
+
     font-family: Arial, sans-serif;
     margin: 0px;
     background-color: #f0f0f0;
@@ -17,9 +18,9 @@ main {
     display: flex;
     color: white;
     overflow:hidden;
-    height: 80px;
+    height: 4.8rem;
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem;
     box-sizing: border-box;
     align-items: center;
     justify-content: space-between;
@@ -28,8 +29,8 @@ main {
 .navbar a {
     display: block;
     text-decoration: none;
-    font-size: 1.4em;
-    padding: 0.6em;
+    font-size: 1.4rem;
+    padding: 0.8rem;
     color: white;
 }
 
@@ -44,7 +45,7 @@ main {
 
 .navbar ul {
     display: flex;
-    gap: 15px;
+    gap: 1.3rem;
     padding: 0;
     margin: 0;
     align-items: center;
@@ -145,28 +146,44 @@ button:hover {
     15px 0 15px -10px rgb(184, 180, 180), /* Right side shadow */
     -15px 0 15px -10px rgb(184, 180, 180); /* Left side shadow */
 }
-.post {
-    width: 70%;
-    max-width: 900px;
-    padding: 30px;
-    margin: 30px 10px;
-    background-color: #f0f0f0;
-    border: 3px solid rgba(215, 213, 213, 0.46);
+
+aside {
+    position: fixed;
+    display: flex;
+    margin: 2%;
+    width: 15%;
+    min-width: 100px;
+    flex-direction: column;
+    top: 40%;
 }
 
+.filters {
+    padding: 5%;
+    box-shadow: 0px 6px 16px rgba(215, 213, 213, 0.46);
+}
 
-.image-section img {
+.home-page {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    flex-direction: row-reverse;
+}
+
+.post {
+    width: 70%;
+    max-width: 56.25rem;
+    padding: 5%;
+    margin: 1.875rem 0.625rem;
+    background-color: #f0f0f0;
+    border: 0.188rem solid rgba(215, 213, 213, 0.46);
+}
+
+.post-image {
     max-width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.content-author {
-    width: 100%;
-    max-height: 40px;
-    height: auto;
-    text-align: justify;
-}
 
 .username {
     font-weight: bold;
@@ -178,5 +195,23 @@ button:hover {
 }
 
 .collapsible-comments {
-    display: none;
+    border-top: 0.188rem solid rgba(215, 213, 213, 0.46);
+    margin-top: 1rem;
+    /*display: none;*/
+}
+
+#back-to-top-btn {
+    width: 100%;
+    /*display:none*/
+}
+
+.rating-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.rating {
+    padding: 0;
+    margin: 0;
+    /*display: none;*/
 }
