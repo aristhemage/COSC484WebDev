@@ -3,34 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ProfilePage</title>
+    <link rel = "stylesheet" href = "styles.css">
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <a href="index.html" id="petstagram-logo">Petstagram</a>
+       <nav class = "navbar">
+            <a href = "index.html" id = "petstagram-logo">Petstagram</a>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="community-guidelines.html">Community Guidelines</a></li>
-                <li><a href="sign-up.html">Sign up</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="profile.html">Profile</a></li>
+                <li><a href = "index.html">Home</a></li>
+                <li><a href = "about.html">About</a></li>
+                <li><a href = "community-guidelines.html">Community Guidelines</a></li>
+                <li><a href = "sign-up.html">Sign up</a></li>
+                <li><a href = "login.html">Login</a></li>
+                <li><a href = "profile.html">Profile</a> <!--TODO: replace profile button with img of user pfp--></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <div class="profileHeader">
-            <img src="profilePicExample.jpg" alt="profile pic" id="profilePic" class = "profilePic"/>
-            <div class="profileBio">
-                <h1 id="username">Test UserName</h1>
-                <p id="bio">Example bio for a profile</p>
-            </div>
+
+    <div class = "profileHeader">
+
+       <img src="exampleProfilePosts/profilePicExample.jpg" alt ="profile pic" id = "profilePic"/>
+
+       <div class = "profileBio">
+       <h1 id = "username">Test UserName</h1>
+       <p id = "bio">Example bio for a profile</p>
         </div>
 
-        <button id="logoutBtn">Logout</button>
+    </div>
+    
+    <table id = "profilePosts">
+        <tr>
+            <td><img src= exampleProfilePosts/profilePicExample.jpg alt = "post 0"></td>
+            <td><img src= exampleProfilePosts/profilePost1.jpg alt = "post 1"></td>
+            <td><img src= exampleProfilePosts/profilePost2.JPEG alt = "post 2"></td>
+        </tr>
+        <tr>
+            <td><img src= exampleProfilePosts/profilePost3.JPEG alt = "post 3"></td>
+        </tr>
+    </table>
+        <button id = "logoutBtn">Logout</button>
     </main>
 
     <script>

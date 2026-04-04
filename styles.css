@@ -104,6 +104,8 @@ button {
     cursor: pointer;
 }
 
+/* Start Profile css */
+
 button:hover {
     background-color: #a36b76;
 }
@@ -111,17 +113,20 @@ button:hover {
 .profileHeader{
     display:flex;
     align-items: center;
+    margin-left:300px;
     padding: 20px;
+    border-bottom:#6d6875;
 }
 
-.profilePic{
+#profilePic{
     width: 150px; 
     height:150px; 
     border-radius:50%;
     margin-right:20px;
+    object-fit: cover;
 }
 
-.profileBio{
+#profileBio{
     display:flex;
     flex-direction:column;
 }
@@ -131,8 +136,31 @@ button:hover {
 }
 
 #bio{
-    font-size:12px;
+    font-size:16px;
 }
+#profilePosts{
+    width:300px;
+    height:300px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    border-top: 1px solid black;
+}
+#profilePosts td{
+    padding:5px;
+}
+#profilePosts tr{
+    padding:5px;
+}
+#profilePosts img{
+    width:400px;
+    height:400px;
+    object-fit: cover;
+    background-color:white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
+/* End Profile css */
 
 .container {
     display: flex;
