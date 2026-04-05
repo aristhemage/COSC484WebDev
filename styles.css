@@ -162,6 +162,7 @@ button:hover {
 }
 /* End Profile css */
 
+/*home page css*/
 .container {
     display: flex;
     margin: 0 auto;
@@ -176,6 +177,7 @@ button:hover {
 }
 
 aside {
+    background-color: #f0f0f0;
     position: fixed;
     display: flex;
     margin: 2%;
@@ -186,7 +188,7 @@ aside {
 }
 
 .filters {
-    padding: 5%;
+    padding: 10% 5%;
     box-shadow: 0px 6px 16px rgba(215, 213, 213, 0.46);
 }
 
@@ -200,7 +202,6 @@ aside {
 .post {
     width: 70%;
     max-width: 56.25rem;
-    padding: 5%;
     margin: 1.875rem 0.625rem;
     background-color: #f0f0f0;
     border: 0.188rem solid rgba(215, 213, 213, 0.46);
@@ -212,10 +213,10 @@ aside {
     object-fit: cover;
 }
 
-
 .username {
     font-weight: bold;
     color:#a36b76;
+    margin: 0.5rem;
 }
 
 .comment {
@@ -226,6 +227,10 @@ aside {
     border-top: 0.188rem solid rgba(215, 213, 213, 0.46);
     margin-top: 1rem;
     /*display: none;*/
+}
+
+.collapsible-comments > *:not(:last-child) {
+    border-bottom: 0.188rem solid rgba(215, 213, 213, 0.46);
 }
 
 #back-to-top-btn {
@@ -243,3 +248,36 @@ aside {
     margin: 0;
     /*display: none;*/
 }
+
+.post-header {
+    display: flex;
+    align-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.post-date {
+    color: rgb(156, 155, 155);
+}
+
+.user-info img{
+    height: 3rem;
+    width: 3rem;
+    border-radius:50%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.comment, .post-description{
+    margin: 1rem;
+}
+
+.post-content {
+    margin-bottom: 1rem;
+}
+
+/* end home page css*/

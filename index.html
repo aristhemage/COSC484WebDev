@@ -24,27 +24,16 @@
     <main class = "home-page">
         <!--EXAMPLE POST 1-->
         <div class = "container">
-            <!--NEEDS:
-                header
-                    pfp    
-                    Author username
-                    date posted (for recent filter)
-                content section
-                    photo
-                    description
-                    rating + avg rating
-                comment section icon(can toggle on and off)
-                    comment username
-                    comment content
-                    include load more button for long comment sections
-            -->
+
             <div class = "post">
                 
-                <section class="content-author">
-                    <!--profile photo and author name go here-->
+                <section class="post-header">
+                    <div class = "user-info">
+                        <img src = "test-post.jpg" class = "profilePic">
+                        <a href = "" class = "username">Author</a>
+                    </div>
+                    <p class = "post-date">Posted: xx-xx-xxxx</p>
                 </section>
-
-                
 
                 <section class = "post-content">
                     <img class = "post-image" src = "exampleProfilePosts/profilePicExample.jpg">
@@ -60,7 +49,7 @@
                     </div>
 
 
-                    <div class = "comment-section">
+                    <section class = "comment-section">
                         <button id = "open-comments-btn"  onclick="">Open Comments</button>
                         
                         <div class = "collapsible-comments">
@@ -69,7 +58,7 @@
                                 <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos iste minus sapiente harum animi quis facilis ex aliquam in maxime error, perferendis vel eaque tempora non? Quaerat, provident dolores!</span></p>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </section>
             </div>
 
@@ -77,13 +66,13 @@
 
             <div class = "post">
                 
-                <section class="content-author">
-                    <!--profile photo and author name go here-->
+                <section class="post-header">
+                    <div class = "user-info">
+                        <img src = "test-post.jpg" class = "profilePic">
+                        <a href = "" class = "username">Author</a>
+                    </div>
+                    <p class = "post-date">Posted: xx-xx-xxxx</p>
                 </section>
-
-
-                
-
 
                 <section class = "post-content">
                     <img class = "post-image" src = "test-post.jpg">
@@ -97,8 +86,7 @@
                         <input type="radio" id = "five-star" value = "5" name = "rating" class = "rating">
                     </div>
 
-
-                    <div class = "comment-section">
+                    <section class = "comment-section">
                         <button id = "open-comments-btn"  onclick="">Open Comments</button>
                         
                         <div class = "collapsible-comments">
@@ -106,17 +94,25 @@
                                 <!--TODO: need to be able to link to people's public profile page-->
                                 <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ea unde sapiente et aliquam distinctio dolor qui deleniti quo reiciendis quisquam, amet, earum maiores minus. Minus aspernatur obcaecati quod ex!</span></p>
                             </div>
+
+                            <div class = "comment">
+                                <!--TODO: need to be able to link to people's public profile page-->
+                                <p><a class = "username" href = "">RockEater9000</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt ea unde sapiente et aliquam distinctio dolor qui deleniti quo reiciendis quisquam, amet, earum maiores minus. Minus aspernatur obcaecati quod ex!</span></p>
+                            </div>
                         </div>
-                    </div>
+                    </section>
                 </section>
             </div>
         </div>
 
         <aside>
             <div class="filters">
-                insert content Filters here<br>
-                <select>
+                <label for ="content-filters">Sort by:</label>
+                <select id = "content-filters">
                     <option value="select">Select</option>
+                    <option value="select">Most Rated</option>
+                    <option value="select">Latest</option>
+                    <option value="select">Oldest</option>
                 </select>
             </div>
             <button id = "back-to-top-btn">Back to Top</button> <!--TODO: add functionality & make visible only after scrolling down some-->
