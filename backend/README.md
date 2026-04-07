@@ -1,96 +1,54 @@
-# pawbase backend
+# Petstagram Backend
 
-express + mongodb backend for the pawbase pet social media app.
+This is the backend for our Petstagram project (Group 2 COSC484).
+Built with Node.js, Express, and MongoDB.
 
-## setup
+## How to run it
 
-1. install dependencies
+make sure you have node installed first
+
+1. go into the backend folder and install everything
 ```bash
 npm install
 ```
 
-2. copy `.env.example` to `.env` and fill in your values
-```bash
-cp .env.example .env
-```
+2. make a .env file (copy from .env.example) and fill in your mongodb connection string and a session secret
 
-you need two things in your .env:
-- `MONGO_URI` — get this from mongodb atlas (free tier is fine)
-- `SESSION_SECRET` — just type any long random string
-
-3. run the dev server
+3. start the server
 ```bash
 npm run dev
 ```
 
-server starts on http://localhost:5000
+it runs on http://localhost:5001
 
----
+## What's in here
 
-## folder structure
+- server.js - main file that starts everything
+- routes/ - auth, posts, and users routes
+- models/ - User and Post schemas
+- middleware/ - checks if user is logged in
 
-```
-pawbase-backend/
-├── models/
-│   ├── User.js       # user schema + password hashing
-│   └── Post.js       # posts, comments, ratings
-├── routes/
-│   ├── auth.js       # register, login, logout, /me
-│   ├── posts.js      # feed, create, delete, rate, comment
-│   └── users.js      # profile page
-├── middleware/
-│   └── requireAuth.js  # protects routes that need login
-├── .env.example
-├── package.json
-└── server.js
-```
+## API Routes
 
----
+**Auth**
+- POST /api/auth/register - make an account
+- POST /api/auth/login - login
+- POST /api/auth/logout - logout
+- GET /api/auth/me - check if logged in
 
-## api endpoints
+**Posts**
+- GET /api/posts - get all posts
+- POST /api/posts - make a post
+- DELETE /api/posts/:id - delete a post
+- POST /api/posts/:id/rate - rate a post
+- POST /api/posts/:id/comments - comment on a post
 
-### auth
-| method | route | description |
-|--------|-------|-------------|
-| POST | /api/auth/register | create account |
-| POST | /api/auth/login | login |
-| POST | /api/auth/logout | logout |
-| GET  | /api/auth/me | check current session |
+**Users**
+- GET /api/users/:username - get someones profile
+- PATCH /api/users/profile - edit your profile
 
-### posts
-| method | route | description |
-|--------|-------|-------------|
-| GET    | /api/posts | get all posts (supports ?sort=recent/popular/unpopular and ?search=) |
-| POST   | /api/posts | create a post (auth required) |
-| DELETE | /api/posts/:id | delete your post (auth required) |
-| POST   | /api/posts/:id/rate | rate a post 1-5 (auth required) |
-| POST   | /api/posts/:id/comments | comment on a post (auth required) |
+## Important
 
-### users
-| method | route | description |
-|--------|-------|-------------|
-| GET   | /api/users/:username | get public profile + their posts |
-| PATCH | /api/users/profile | update your own profile (auth required) |
+when calling the api from the frontend always add credentials: 'include' or the login wont work
 
----
-
-## connecting to react
-
-in your react app, fetch from `http://localhost:5000/api/...` and make sure you include `credentials: 'include'` on every request so the session cookie gets sent:
-
-```js
-const res = await fetch('http://localhost:5000/api/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  credentials: 'include',   // <-- important
-  body: JSON.stringify({ email, password })
-})
-```
-
----
-
-## notes
-
-- images aren't stored in mongo — just the url. for actual image uploads you'd add multer + cloudinary but that can come later
-- passwords are hashed with bcrypt before saving, never stored plain
-- sessions expire after 24 hours
+the server needs to be running for anything to work
