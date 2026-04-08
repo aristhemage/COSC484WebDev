@@ -4,14 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class = "form-page">
+<body class="form-page">
     <main>
-        <div class = "form-box">
+        <div class="form-box">
             <h1>Sign Up</h1>
+
+            <input type="text" id="newUsername" placeholder="Username" required>
+            <input type="password" id="newPassword" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+            <button id="signupButton">Create Account</button>
         </div>
     </main>
-    
+
+    <script>
+        const signupButton = document.getElementById("signupButton");
+
+        signupButton.addEventListener("click", () => {
+            const username = document.getElementById("newUsername").value.trim();
+            const password = document.getElementById("newPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Get users from storage
+            let users = JSON.parse(localStorage.getItem("users")) || {};
+
+            // Check empty username
+            if (!username) {
+                alert("Username cannot be empty!");
+                return;
+            }
+
+            // Check password match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            // Check if user exists
+            if (users[username]) {
+                alert("Username already exists!");
+                return;
+            }
+
+            // Save user
+            users[username] = {
+                password: password,
+                bio: "No bio yet!",
+                pic: "default.jpg"
+            };
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Account created!");
+
+            window.location.href = "login.html";
+        });
+    </script>
 </body>
 </html>
