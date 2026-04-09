@@ -217,20 +217,20 @@ aside {
 .username {
     font-weight: bold;
     color:#a36b76;
-    margin: 0.5rem;
 }
 
 .comment {
     text-align: justify;
 }
 
-.collapsible-comments {
+#collapsible-comments {
     border-top: 0.188rem solid rgba(215, 213, 213, 0.46);
     margin-top: 1rem;
-    /*display: none;*/
+    display: none;
 }
 
-.collapsible-comments > *:not(:last-child) {
+/*dividers between comments, excepting the last one*/
+#collapsible-comments > *:not(:last-child) {
     border-bottom: 0.188rem solid rgba(215, 213, 213, 0.46);
 }
 
@@ -247,7 +247,6 @@ aside {
 .rating {
     padding: 0;
     margin: 0;
-    /*display: none;*/
 }
 
 .post-header {
@@ -265,6 +264,7 @@ aside {
     height: 3rem;
     width: 3rem;
     border-radius:50%;
+    margin-right: 0.5rem;
 }
 
 .user-info {
@@ -275,6 +275,37 @@ aside {
 
 .comment, .post-description{
     margin: 1rem;
+}
+
+
+#open-comments-btn {
+    border: none;
+    background-image: url("comment-icon.svg");
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    background-color: #f0f0f0;
+    margin: 1rem 1rem 0 auto;
+}
+
+#comment-box {
+    width: 100%;
+    min-height: 2rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid transparent;
+    line-height: 1.4;
+    font-size: 16px;
+    resize: vertical;
+    font-family: inherit;
+    display: block;
+    margin: 0.4rem 0;
+}
+#post-comment-btn {
+    width: 4rem;
+    padding: 0.4rem;
+    margin: 0.5rem auto 1rem 0;
 }
 
 .post-content {
