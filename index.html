@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petstagram</title>
+    <!--Library for star icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel = "stylesheet" href = "styles.css">
     <script type = "text/javascript" src = "scripts.js" defer></script>
 </head>
@@ -30,43 +32,64 @@
                 
                 <section class="post-header">
                     <div class = "user-info">
-                        <img src = "test-post.jpg" class = "profilePic">
+                        <img src = "\images\test-post.jpg" class = "profilePic">
                         <a href = "" class = "username">Author</a>
                     </div>
                     <p class = "post-date">Posted: xx-xx-xxxx</p>
                 </section>
 
                 <section class = "post-content">
-                    <img class = "post-image" src = "exampleProfilePosts/profilePicExample.jpg">
+                    <img class = "post-image" src = "\images/test-post.jpg">
 
                     <p class ="post-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia voluptatibus perspiciatis enim quidem. Quae nulla soluta alias unde impedit, excepturi cumque repellat omnis at magni, ipsum possimus quo, atque temporibus.</p>
                     
                     <div class = "rating-container">
-                        <input type="radio" id = "one-star" value = "1" name = "rating" class = "rating">
-                        <input type="radio" id = "two-star" value = "2" name = "rating" class = "rating">
-                        <input type="radio" id = "three-star" value = "3" name = "rating" class = "rating">
-                        <input type="radio" id = "four-star" value = "4" name = "rating" class = "rating">
-                        <input type="radio" id = "five-star" value = "5" name = "rating" class = "rating">
+
+                        <input type="radio" id = "star5" value = "5" name = "rating">
+                        <label for="star5">
+                            <i class="fa-solid fa-star"></i>
+                        </label>
+
+                        <input type="radio" id = "star4" value = "4" name = "rating">
+                        <label for = "star4" class = "star">
+                            <i class="fa-solid fa-star"></i>
+                        </label>
+
+                        <input type="radio" id = "star3" value = "3" name = "rating">
+                        <label for = "star3" class = "star">
+                            <i class="fa-solid fa-star"></i>
+                        </label>
+
+                        <input type="radio" id = "star2" value = "2" name = "rating">
+                        <label for = "star2" class = "star">
+                            <i class="fa-solid fa-star"></i>
+                        </label>
+
+                        <input type="radio" id = "star1" value = "1" name = "rating">
+                        <label for = "star1" class = "star">
+                            <i class="fa-solid fa-star"></i>
+                        </label>
+
+                        
                     </div>
 
-
-                    <section class = "comment-section">
+                    <section class = "post-footer">
                         <button id = "open-comments-btn"></button>
-                        
-                        <div id = "collapsible-comments">
-                            <div class = "comment">
-                                <form action="" id = "add-comment">
-                                    <label for = "comment-box"><a class = "username" href="">Username</a>:</label>
-                                    <textarea id = "comment-box" placeholder = "Leave a comment..."></textarea>
+                    </section>
+ 
+                    <section id = "collapsible-comments">
+                        <div class = "comment">
+                            <form action="" id = "add-comment">
+                                <label for = "comment-box"><a class = "username" href="">Username</a>:</label>
+                                <textarea id = "comment-box" placeholder = "Leave a comment..."></textarea>
 
-                                    <button id = "post-comment-btn" type = "submit">post</button>
-                                </form>
-                            </div>
+                                <button id = "post-comment-btn" type = "submit">post</button>
+                            </form>
+                        </div>
                             
-                            <div class = "comment">
+                        <div class = "comment">
                                 <!--TODO: need to be able to link to people's public profile page-->
-                                <p><a class = "username" href = "">Username</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos iste minus sapiente harum animi quis facilis ex aliquam in maxime error, perferendis vel eaque tempora non? Quaerat, provident dolores!</span></p>
-                            </div>
+                            <p><a class = "username" href = "">Username</a>: <span class="comment-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eos iste minus sapiente harum animi quis facilis ex aliquam in maxime error, perferendis vel eaque tempora non? Quaerat, provident dolores!</span></p>
                         </div>
                     </section>
                 </section>
