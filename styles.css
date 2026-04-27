@@ -139,13 +139,19 @@ button:hover {
 #bio{
     font-size:16px;
 }
-#profilePosts{
-    width:300px;
-    height:300px;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-    border-top: 1px solid black;
+.addPostTile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: 0.2s ease;
+}
+
+.addPostTile:hover {
+    background-color: #e6e6e6;
 }
 #profilePosts td{
     padding:5px;
@@ -153,13 +159,70 @@ button:hover {
 #profilePosts tr{
     padding:5px;
 }
-#profilePosts img{
-    width:400px;
-    height:400px;
+#profilePosts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding-top: 10px;
+    border-top: 1px solid black;
+}
+
+#profilePosts img,
+.addPostTile {
+    width: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    background-color:white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content textarea {
+    height: 80px;
+    resize: none;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.profileActions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profileActions button {
+    width: auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 /* End Profile css */
 
