@@ -10,18 +10,27 @@ router.get('/', async (req, res) => {
 
   let query = {}
   if (search) {
+    // case-insensitive partial match on pet name
     query.petName = { $regex: search, $options: 'i' }
   }
 
-  let sortOption = { createdAt: -1 } // default: most recent
-  if (sort === 'popular') sortOption = { 'ratings.length': -1 }
-  if (sort === 'unpopular') sortOption = { 'ratings.length': 1 }
-
   try {
-    const posts = await Post.find(query)
-      .sort(sortOption)
+    let posts = await Post.find(query)
       .populate('author', 'username profilePic')
       .populate('comments.author', 'username')
+
+    // sort in JS so we can use the avgRating virtual field
+    if (sort === 'popular') {
+      posts.sort((a, b) => b.ratings.length - a.ratings.length)
+    } else if (sort === 'unpopular') {
+      posts.sort((a, b) => a.ratings.length - b.ratings.length)
+    } else if (sort === 'top-rated') {
+      // highest avg rating first
+      posts.sort((a, b) => b.avgRating - a.avgRating)
+    } else {
+      // default: most recent
+      posts.sort((a, b) => b.createdAt - a.createdAt)
+    }
 
     res.json(posts)
   } catch (err) {
@@ -30,7 +39,21 @@ router.get('/', async (req, res) => {
   }
 })
 
-// POST /api/posts, create a new post
+// GET /api/posts/:id — single post (used for the popup)
+router.get('/:id', async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id)
+      .populate('author', 'username profilePic')
+      .populate('comments.author', 'username profilePic')
+
+    if (!post) return res.status(404).json({ error: 'post not found' })
+    res.json(post)
+  } catch (err) {
+    res.status(500).json({ error: 'could not fetch post' })
+  }
+})
+
+// POST /api/posts — create a new post
 router.post('/', requireAuth, async (req, res) => {
   const { imageUrl, caption, petName } = req.body
 
@@ -54,7 +77,7 @@ router.post('/', requireAuth, async (req, res) => {
   }
 })
 
-// DELETE /api/posts/:id, only the post owner can delete
+// DELETE /api/posts/:id — only the author can delete
 router.delete('/:id', requireAuth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id)
@@ -71,7 +94,7 @@ router.delete('/:id', requireAuth, async (req, res) => {
   }
 })
 
-// POST /api/posts/:id/rate
+// POST /api/posts/:id/rate — rate 1-5, prevents duplicate ratings
 router.post('/:id/rate', requireAuth, async (req, res) => {
   const { value } = req.body
 
@@ -83,7 +106,7 @@ router.post('/:id/rate', requireAuth, async (req, res) => {
     const post = await Post.findById(req.params.id)
     if (!post) return res.status(404).json({ error: 'post not found' })
 
-    // check if user already rated this post, update if so
+    // if user already rated, update; otherwise add new rating
     const existing = post.ratings.find(r => r.user.toString() === req.session.userId.toString())
     if (existing) {
       existing.value = value
@@ -92,8 +115,12 @@ router.post('/:id/rate', requireAuth, async (req, res) => {
     }
 
     await post.save()
-    res.json({ avgRating: post.avgRating, totalRatings: post.ratings.length })
+    res.json({
+      avgRating: post.avgRating,
+      ratingCount: post.ratings.length
+    })
   } catch (err) {
+    console.error(err)
     res.status(500).json({ error: 'could not submit rating' })
   }
 })
@@ -112,12 +139,13 @@ router.post('/:id/comments', requireAuth, async (req, res) => {
 
     post.comments.push({ author: req.session.userId, text: text.trim() })
     await post.save()
-    await post.populate('comments.author', 'username')
+    await post.populate('comments.author', 'username profilePic')
 
-    // return just the new comment
+    // return just the new comment so the frontend can append it
     const newComment = post.comments[post.comments.length - 1]
     res.status(201).json(newComment)
   } catch (err) {
+    console.error(err)
     res.status(500).json({ error: 'could not add comment' })
   }
 })

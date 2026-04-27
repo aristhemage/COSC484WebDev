@@ -34,8 +34,8 @@ const postSchema = new mongoose.Schema({
   },
   comments: [commentSchema],
 
-  // ratings: store each user's rating so we can prevent duplicates
-  // and calculate average rating on the fly without needing to update it every time
+  // store each user's rating so we can prevent duplicates
+  // and calculate the average on the fly
   ratings: [
     {
       user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -44,11 +44,16 @@ const postSchema = new mongoose.Schema({
   ]
 }, { timestamps: true })
 
-// virtual field, calculates average rating without storing it
+// virtual field: average rating, calculated on read (not stored)
 postSchema.virtual('avgRating').get(function () {
   if (this.ratings.length === 0) return 0
   const total = this.ratings.reduce((sum, r) => sum + r.value, 0)
-  return (total / this.ratings.length).toFixed(1)
+  return Number((total / this.ratings.length).toFixed(1))
+})
+
+// virtual field: total ratings count, easier for frontend than ratings.length
+postSchema.virtual('ratingCount').get(function () {
+  return this.ratings.length
 })
 
 postSchema.set('toJSON', { virtuals: true })
