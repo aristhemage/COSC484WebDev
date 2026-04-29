@@ -2,18 +2,20 @@ const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const cors = require('cors')
+const path = require('path')
 require('dotenv').config()
 
 const authRoutes = require('./routes/auth')
 const postRoutes = require('./routes/posts')
 const userRoutes = require('./routes/users')
+const uploadRoutes = require('./routes/upload')
 
 const app = express()
 
 // middleware
 app.use(express.json())
 app.use(cors({
-  origin: 'http://localhost:3000', // your react app
+  origin: 'http://localhost:3000', // react dev server
   credentials: true
 }))
 app.use(session({
@@ -21,10 +23,13 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    secure: false, // flip to true when you deploy w/ https
+    secure: false, // flip to true when deployed on https
     maxAge: 1000 * 60 * 60 * 24 // 24 hours
   }
 }))
+
+// serve uploaded images statically at /uploads/<filename>
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 // connect to mongo
 mongoose.connect(process.env.MONGO_URI)
@@ -35,10 +40,11 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/auth', authRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/upload', uploadRoutes)
 
 // health check
 app.get('/', (req, res) => {
-  res.json({ message: 'pawbase api is running' })
+  res.json({ message: 'petstagram api is running' })
 })
 
 const PORT = process.env.PORT || 5000
