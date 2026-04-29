@@ -13,7 +13,7 @@ make a `.env` file in this folder with:
 ```
 MONGO_URI=<the shared atlas connection string>
 SESSION_SECRET=whatever_long_string
-PORT=5000
+PORT=5001
 ```
 
 then:
@@ -29,12 +29,12 @@ if it works you'll see `mongodb connected`. if not the .env is probably wrong.
 a couple things or stuff won't work:
 
 1. every fetch needs `credentials: 'include'`, otherwise sessions break and you'll get logged out on every refresh
-2. base url is `http://localhost:5000/api`. cors is set to `http://localhost:3000` so make sure vite is on 3000
+2. base url is `http://localhost:5001/api`. cors is set to `http://localhost:3000` so make sure vite is on 3000
 
 example:
 
 ```js
-const res = await fetch('http://localhost:5000/api/posts', {
+const res = await fetch('http://localhost:5001/api/posts', {
   credentials: 'include'
 })
 const posts = await res.json()
@@ -43,7 +43,7 @@ const posts = await res.json()
 POST with a body:
 
 ```js
-const res = await fetch('http://localhost:5000/api/posts', {
+const res = await fetch('http://localhost:5001/api/posts', {
   method: 'POST',
   credentials: 'include',
   headers: { 'Content-Type': 'application/json' },
@@ -102,7 +102,7 @@ heads up: this one takes FormData, NOT json. don't set Content-Type manually, th
 const formData = new FormData()
 formData.append('image', file)
 
-const res = await fetch('http://localhost:5000/api/upload', {
+const res = await fetch('http://localhost:5001/api/upload', {
   method: 'POST',
   credentials: 'include',
   body: formData  // no Content-Type header here!
@@ -110,7 +110,7 @@ const res = await fetch('http://localhost:5000/api/upload', {
 const { imageUrl } = await res.json()
 
 // then create the post with that url
-await fetch('http://localhost:5000/api/posts', {
+await fetch('http://localhost:5001/api/posts', {
   method: 'POST',
   credentials: 'include',
   headers: { 'Content-Type': 'application/json' },
@@ -135,4 +135,4 @@ everything returns json like `{ error: "message" }` when something goes wrong.
 - "db connection error" -> .env is wrong or your IP isn't whitelisted in atlas
 - always logged out / sessions don't work -> you forgot `credentials: 'include'` somewhere
 - cors error -> react app isn't on port 3000
-- uploaded image won't load -> make sure you're using the url that came back from the upload endpoint, should be `http://localhost:5000/uploads/<filename>`
+- uploaded image won't load -> make sure you're using the url that came back from the upload endpoint, should be `http://localhost:5001/uploads/<filename>`
