@@ -30,14 +30,14 @@ const userSchema = new mongoose.Schema({
   }
 }, { timestamps: true })
 
-// hash the password before saving - never store plain text
+// hash password before saving — never store plain text
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next()
   this.password = await bcrypt.hash(this.password, 10)
   next()
 })
 
-// helper method to check password on login
+// helper for login
 userSchema.methods.comparePassword = async function (plaintext) {
   return await bcrypt.compare(plaintext, this.password)
 }

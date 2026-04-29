@@ -5,7 +5,7 @@ const Post = require('../models/Post')
 const requireAuth = require('../middleware/requireAuth')
 
 // GET /api/users?search=name — search profiles by username
-// returns up to 20 matches, useful for a search bar
+// returns up to 20 matches
 router.get('/', async (req, res) => {
   const { search } = req.query
 

@@ -6,7 +6,6 @@ const User = require('../models/User')
 router.post('/register', async (req, res) => {
   const { username, email, password } = req.body
 
-  // basic validation - you can beef this up later
   if (!username || !email || !password) {
     return res.status(400).json({ error: 'all fields are required' })
   }
@@ -32,22 +31,21 @@ router.post('/register', async (req, res) => {
   }
 })
 
-// POST /api/auth/login
+// POST /api/auth/login — accepts either username or email as "identifier"
 router.post('/login', async (req, res) => {
   const { identifier, password } = req.body
 
-  // user can log in with either username or email
   if (!identifier || !password) {
     return res.status(400).json({ error: 'username/email and password required' })
   }
 
   try {
-    const user = await User.findOne({ 
-      $or : [
-        {email: identifier},
-        {username: identifier}
+    const user = await User.findOne({
+      $or: [
+        { email: identifier },
+        { username: identifier }
       ]
-     })
+    })
     if (!user) {
       return res.status(401).json({ error: 'invalid credentials' })
     }
@@ -78,7 +76,7 @@ router.post('/logout', (req, res) => {
   })
 })
 
-// GET /api/auth/me - useful for react to check if user is still logged in
+// GET /api/auth/me — react uses this on app load to check if user still has a session
 router.get('/me', async (req, res) => {
   if (!req.session.userId) {
     return res.status(401).json({ error: 'not logged in' })
