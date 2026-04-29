@@ -35,7 +35,7 @@
                         <img src = "\images\test-post.jpg" class = "profilePic">
                         <a href = "" class = "username">Author</a>
                     </div>
-                    <p class = "post-date">Posted: xx-xx-xxxx</p>
+                    <p class = "light-gray"><span class = "avg-rating bold" title = "Average Rating">4.5</span><span class = "num-ratings" title = "Total Ratings"> (20)</span><i class="fa-solid fa-star"></i></p>
                 </section>
 
                 <section class = "post-content">
@@ -74,16 +74,17 @@
                     </div>
 
                     <section class = "post-footer">
-                        <button id = "open-comments-btn"></button>
+                        <p class = "light-gray post-date">Posted: xx-xx-xxxx</p>
+                        <button class = "open-comments-btn"></button>
                     </section>
  
-                    <section id = "collapsible-comments">
+                    <section class = "collapsible-comments">
                         <div class = "comment">
-                            <form action="" id = "add-comment">
+                            <form action="">
                                 <label for = "comment-box"><a class = "username" href="">Username</a>:</label>
-                                <textarea id = "comment-box" placeholder = "Leave a comment..."></textarea>
+                                <textarea class = "comment-box" placeholder = "Leave a comment..."></textarea>
 
-                                <button id = "post-comment-btn" type = "submit">post</button>
+                                <button class = "post-comment-btn" type = "submit">post</button>
                             </form>
                         </div>
                             

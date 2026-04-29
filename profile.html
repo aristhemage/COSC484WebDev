@@ -4,68 +4,107 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProfilePage</title>
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-       <nav class = "navbar">
-            <a href = "index.html" id = "petstagram-logo">Petstagram</a>
-            <ul>
-                <li><a href = "index.html">Home</a></li>
-                <li><a href = "about.html">About</a></li>
-                <li><a href = "community-guidelines.html">Community Guidelines</a></li>
-                <li><a href = "sign-up.html">Sign up</a></li>
-                <li><a href = "login.html">Login</a></li>
-                <li><a href = "profile.html">Profile</a> <!--TODO: replace profile button with img of user pfp--></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar">
+        <a href="index.html" id="petstagram-logo">Petstagram</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community-guidelines.html">Community Guidelines</a></li>
+            <li><a href="sign-up.html">Sign up</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="profile.html">Profile</a> <!--TODO: replace profile button with img of user pfp--></li>
+        </ul>
+    </nav>
+</header>
 
-    <main>
+<main>
 
-    <div class = "profileHeader">
+    <div class="profileHeader">
 
-       <img src="exampleProfilePosts/profilePicExample.jpg" alt ="profile pic" id = "profilePic"/>
+        <img src="exampleProfilePosts/profilePicExample.jpg" alt="profile pic" id="profilePic"/>
 
-       <div class = "profileBio">
-       <h1 id = "username">Test UserName</h1>
-       <p id = "bio">Example bio for a profile</p>
+        <div class="profileBio">
+            <h1 id="username">Test UserName</h1>
+            <p id="bio">Example bio for a profile</p>
         </div>
 
     </div>
-    
-    <table id = "profilePosts">
-        <tr>
-            <td><img src= exampleProfilePosts/profilePicExample.jpg alt = "post 0"></td>
-            <td><img src= exampleProfilePosts/profilePost1.jpg alt = "post 1"></td>
-            <td><img src= exampleProfilePosts/profilePost2.JPEG alt = "post 2"></td>
-        </tr>
-        <tr>
-            <td><img src= exampleProfilePosts/profilePost3.JPEG alt = "post 3"></td>
-        </tr>
-    </table>
-        <button id = "logoutBtn">Logout</button>
-    </main>
 
-    <script>
-        const username = localStorage.getItem("loggedInUser");
-        const bio = localStorage.getItem("loggedInUserBio");
-        const pic = localStorage.getItem("loggedInUserPic");
+    <div id="profilePosts">
 
-        if(username){
-            document.getElementById("username").textContent = username;
-            if(bio) document.getElementById("bio").textContent = bio;
-            if(pic) document.getElementById("profilePic").src = pic;
-        } else {
-            // If no one is logged in, redirect to login page
-            window.location.href = "login.html";
+        <div class="addPostTile">
+            + Add Post
+        </div>
+
+        <img src="exampleProfilePosts/profilePicExample.jpg" alt="post 0">
+        <img src="exampleProfilePosts/profilePost1.jpg" alt="post 1">
+        <img src="exampleProfilePosts/profilePost2.JPEG" alt="post 2">
+        <img src="exampleProfilePosts/profilePost3.JPEG" alt="post 3">
+
+    </div>
+
+    <div id="postModal" class="modal">
+        <div class="modal-content">
+            <h2>Create Post</h2>
+
+            <input type="file" id="postImage" accept="image/*" />
+
+            <textarea id="postDescription" placeholder="Write a description..."></textarea>
+
+            <div class="modal-buttons">
+                <button id="submitPost">  Post  </button>
+                <button id="closeModal">  Cancel  </button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    const username = localStorage.getItem("loggedInUser");
+    const bio = localStorage.getItem("loggedInUserBio");
+    const pic = localStorage.getItem("loggedInUserPic");
+
+    if (username) {
+        document.getElementById("username").textContent = username;
+        if (bio) document.getElementById("bio").textContent = bio;
+        if (pic) document.getElementById("profilePic").src = pic;
+    } else {
+        window.location.href = "login.html";
+    }
+
+    const modal = document.getElementById("postModal");
+    const closeModal = document.getElementById("closeModal");
+
+    document.querySelector(".addPostTile").addEventListener("click", () => {
+        modal.style.display = "block";
+    });
+
+    closeModal.addEventListener("click", () => {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
         }
+    });
 
-        // Logout button
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-            localStorage.clear();
-            window.location.href = "login.html";
-        });
-    </script>
+    document.getElementById("submitPost").addEventListener("click", () => {
+        const file = document.getElementById("postImage").files[0];
+        const desc = document.getElementById("postDescription").value;
+
+        console.log("Selected file:", file);
+        console.log("Description:", desc);
+
+        modal.style.display = "none";
+    });
+
+</script>
+
 </body>
 </html>

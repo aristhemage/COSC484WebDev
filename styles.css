@@ -107,7 +107,7 @@ button {
 
 /* Start Profile css */
 
-button:hover {
+button:not(.open-comments-btn):hover {
     background-color: #a36b76;
 }
 
@@ -139,13 +139,19 @@ button:hover {
 #bio{
     font-size:16px;
 }
-#profilePosts{
-    width:300px;
-    height:300px;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-    border-top: 1px solid black;
+.addPostTile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: 0.2s ease;
+}
+
+.addPostTile:hover {
+    background-color: #e6e6e6;
 }
 #profilePosts td{
     padding:5px;
@@ -153,13 +159,70 @@ button:hover {
 #profilePosts tr{
     padding:5px;
 }
-#profilePosts img{
-    width:400px;
-    height:400px;
+#profilePosts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 900px;
+    margin: 20px auto;
+    padding-top: 10px;
+    border-top: 1px solid black;
+}
+
+#profilePosts img,
+.addPostTile {
+    width: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
-    background-color:white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background: white;
+    width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content textarea {
+    height: 80px;
+    resize: none;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.profileActions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profileActions button {
+    width: auto;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 /* End Profile css */
 
@@ -223,14 +286,34 @@ aside {
     text-align: justify;
 }
 
-#collapsible-comments {
+.light-gray {
+    color: rgb(156, 155, 155);
+}
+.post-footer {
+    display: flex;
+    align-content: space-between;
+    align-items: flex-end;
+    margin: 1rem;
+}
+.post-header i {
+    color: #f1c84f;
+    font-size: 1.8rem;
+    margin-left: 0.3rem;
+}
+
+.bold {
+    font-weight: 600;
+}
+.post-header span {
+    font-size: 1.1rem;
+}
+.collapsible-comments {
     border-top: 0.188rem solid rgba(215, 213, 213, 0.46);
     margin-top: 1rem;
-    display: none;
 }
 
 /*dividers between comments, excepting the last one*/
-#collapsible-comments > *:not(:last-child) {
+.collapsible-comments > *:not(:last-child) {
     border-bottom: 0.188rem solid rgba(215, 213, 213, 0.46);
 }
 
@@ -253,7 +336,7 @@ aside {
 
 .rating-container label:hover i, .rating-container label:hover ~ label i {
     color: #f1c84f;
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 .rating-container input[type="radio"]:checked + label i,
@@ -276,7 +359,7 @@ aside {
     display: flex;
     align-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 1rem;
 }
 
 .post-date {
@@ -300,18 +383,17 @@ aside {
     margin: 1rem;
 }
 
-
-#open-comments-btn {
+.open-comments-btn {
     border: none;
     background-image: url("/images/comment-icon.svg");
     background-size: cover;
     height: 45px;
     width: 45px;
     background-color: #f0f0f0;
-    margin: 1rem 1rem 0 auto;
+    margin: 1rem 0 0 auto;
 }
 
-#comment-box {
+.comment-box {
     width: 100%;
     min-height: 2rem;
     padding: 0.5rem;
@@ -325,7 +407,7 @@ aside {
     display: block;
     margin: 0.4rem 0;
 }
-#post-comment-btn {
+.post-comment-btn {
     width: 4rem;
     padding: 0.4rem;
     margin: 0.5rem auto 1rem 0;
