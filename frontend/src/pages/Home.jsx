@@ -4,7 +4,7 @@ import Post from '../components/Post'
 const testPost = {
     "id": 1,
 
-    "author": "John post",
+    "author": "John poster",
     "pfpURL": "../assets/test-post.jpg",
     "avgRating": 3.5,
     "totalRatings": 40,
@@ -14,22 +14,60 @@ const testPost = {
     "datePosted": "12-12-2012",
     "Comments": [
         {
-            "username": "RockEater900",
+          "id":1,  
+          "username": "RockEater900",
             "text": "I eat rocks"
         },
 
         {
+          "id":2,
             "username": "frog",
             "text": "kitty meowww omg meowww kitty woawwwwwww kitty"
         },
 
         {
+            "id":3,
             "username": "meeps",
             "text": "asdasdass asdasdsa asdasd ads ads asd asd asd asd ads"
         }
     ]
 
 };
+
+const testPost2 = {
+    "id": 2,
+
+    "author": "Joe Biden",
+    "pfpURL": "../assets/test-post.jpg",
+    "avgRating": 1.0,
+    "totalRatings": 400,
+
+    "imgURL": "../assets/test-post.jpg",
+    "description": "kitty",
+    "datePosted": "10-12-2012",
+    "Comments": [
+        {
+          "id":348,  
+          "username": "RockEater900",
+            "text": "hello"
+        },
+
+        {
+          "id":3443,
+            "username": "frog",
+            "text": "hello"
+        },
+
+        {
+            "id":123,
+            "username": "meeps",
+            "text": "asdasdass asdasdsa asdasd ads ads asd asd asd asd ads"
+        }
+    ]
+
+};
+
+const posts = [testPost, testPost2];
 
 const currUser = "bob";
 
@@ -38,9 +76,9 @@ export const Home = () => {
     <main className = "home-page">
       
       <div className = "container">
-        <Post postData ={testPost} currUser = "Bob"/>
-        <Post postData ={testPost} currUser = "Bob"/>
-        <Post postData ={testPost} currUser = "Bob"/>
+        {posts.map((post) => (
+          <Post key = {post.id} postData ={post} currUser = {currUser}/>
+        ))}
       </div>
     
       <aside>

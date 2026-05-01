@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import image from '../assets/test-post.jpg';
 import Rating from './Rating';
 import Comment from './Comment';
+import { Link } from 'react-router-dom';
 
 const Post = ({postData, currUser}) => {
   return (
@@ -10,7 +11,7 @@ const Post = ({postData, currUser}) => {
         <section className="post-header">
             <div className = "user-info">
                 <img src = {image} className = "profilePic" />
-                <a href = "/profile" className = "username">{postData.author}</a>
+                <Link to = "/profile" className = "username">{postData.author}</Link>
             </div>
             <p className = "light-gray">
                     <span className = "avg-rating bold" title = "Average Rating">{postData.avgRating}</span>
@@ -32,14 +33,14 @@ const Post = ({postData, currUser}) => {
             <section className="collapsible-comments">
                 <form method="POST" action ="" className = "comment">
                     <label>
-                        <a className = "username" href="/profile">{currUser}</a>:
+                        <Link className = "username" to="/profile">{currUser}</Link>:
                         <textarea className = "comment-box" placeholder = "Leave a comment..."></textarea>
                     </label>
                     <button className = "post-comment-btn" type = "submit">Post</button>
                 </form>
 
                 {postData.Comments.map((comment) => (
-                    <Comment username = {comment.username} text = {comment.text}/>
+                    <Comment key = {comment.id} username = {comment.username} text = {comment.text}/>
                 ))}
             </section>
         </section>
