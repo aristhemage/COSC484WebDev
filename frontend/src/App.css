@@ -244,7 +244,7 @@ aside {
     background-color: #f0f0f0;
     position: fixed;
     display: flex;
-    margin: 2%;
+    margin: 0%;
     width: 15%;
     min-width: 100px;
     flex-direction: column;
@@ -304,6 +304,7 @@ aside {
 .bold {
     font-weight: 600;
 }
+
 .post-header span {
     font-size: 1.1rem;
 }
@@ -326,10 +327,15 @@ aside {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
+    align-content: center;
     padding: 1rem;
 
 }
 
+.rating-container button {
+    width: 10%;
+    margin: 0.5rem;
+}
 .rating-container label {
     color: rgb(96, 91, 91);
 }
@@ -385,7 +391,7 @@ aside {
 
 .open-comments-btn {
     border: none;
-    background-image: url("/images/comment-icon.svg");
+    background-image: url('./assets/comment-icon.svg');
     background-size: cover;
     height: 45px;
     width: 45px;

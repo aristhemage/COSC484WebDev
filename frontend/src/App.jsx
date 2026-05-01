@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route, Link, Outlet} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import MainLayout from './components/MainLayout';
 
+
 function App() {
   return (
     <BrowserRouter>
