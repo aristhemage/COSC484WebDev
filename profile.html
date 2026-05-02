@@ -36,15 +36,6 @@
 
     <div id="profilePosts">
 
-        <div class="addPostTile">
-            + Add Post
-        </div>
-
-        <img src="exampleProfilePosts/profilePicExample.jpg" alt="post 0">
-        <img src="exampleProfilePosts/profilePost1.jpg" alt="post 1">
-        <img src="exampleProfilePosts/profilePost2.JPEG" alt="post 2">
-        <img src="exampleProfilePosts/profilePost3.JPEG" alt="post 3">
-
     </div>
 
     <div id="postModal" class="modal">
@@ -77,6 +68,21 @@
         window.location.href = "login.html";
     }
 
+
+    <!--will need to be changed to a fetch from database-->
+    const images = ["exampleProfilePosts/profilePicExample.jpg",
+        "exampleProfilePosts/profilePost1.jpg",
+        "exampleProfilePosts/profilePost2.JPEG",
+        "exampleProfilePosts/profilePost3.JPEG"];
+
+    const postGrid = document.getElementById("profilePosts");
+    postGrid.innerHTML = `<div class="addPostTile">
+            + Add Post
+        </div>`
+    images.forEach((src,index) =>{
+        postGrid.innerHTML +=`<img src = "${src}" alt ="${index}"/>`
+    });
+    
     const modal = document.getElementById("postModal");
     const closeModal = document.getElementById("closeModal");
 
@@ -103,7 +109,6 @@
 
         modal.style.display = "none";
     });
-
 </script>
 
 </body>

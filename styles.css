@@ -153,12 +153,7 @@ button:not(.open-comments-btn):hover {
 .addPostTile:hover {
     background-color: #e6e6e6;
 }
-#profilePosts td{
-    padding:5px;
-}
-#profilePosts tr{
-    padding:5px;
-}
+
 #profilePosts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
